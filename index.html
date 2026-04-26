@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Koi — Ristorante Giapponese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   GIAPPONESE MINIMAL ZEN — template v1
+   Palette: off-white + nero + rosso hinomaru
+   Design: molto spazio, asimmetrico, pulito
+   Tokens: Koi  Cucina giapponese autentica. Nati dalla passione per la cultura gastronomica giapponese, proponiamo una cucina fedele alla tradizione: nessun compromesso con l'autenticita.
+             
+           photo-1559410545-0bdcd187e0a6  photo-1517248135467-4c7edcad34c4
+           Via Secondo Frola 011 543957 info@ristorantekoi.it 10121 Torino
+           2003
+   ============================================= */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+:root{
+  --bg:#fafaf7;
+  --bg2:#f2f0ec;
+  --ink:#0f0f0f;
+  --ink2:#3a3a3a;
+  --ink3:#888;
+  --red:#bc002d;
+  --red2:#960025;
+  --border:#e0ded8;
+  --border-dark:rgba(15,15,15,.08);
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;max-width:100vw}
+
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+@media(min-width:1024px){.container{padding:0 48px}}
+
+/* ---- NAV ---- */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(250,250,247,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+@media(min-width:1024px){.nav-inner{padding:0 48px}}
+.nav-logo{display:flex;flex-direction:column;text-decoration:none;cursor:pointer}
+.nav-logo-en{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);line-height:1}
+.nav-logo-jp{font-size:.62rem;letter-spacing:.3em;color:var(--ink3);margin-top:2px}
+.nav-links{display:none;gap:40px;list-style:none}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-links a{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{display:none;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);text-decoration:none;cursor:pointer;border-bottom:1px solid var(--red);padding-bottom:2px;transition:opacity .2s}
+@media(min-width:768px){.nav-cta{display:block}}
+.nav-cta:hover{opacity:.7}
+
+/* ---- HERO ---- */
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr;position:relative;overflow:hidden}
+@media(min-width:768px){.hero{grid-template-columns:1fr 1fr}}
+.hero-text-col{display:flex;flex-direction:column;justify-content:flex-end;padding:120px 24px 64px;position:relative;z-index:2;background:var(--bg)}
+@media(min-width:768px){.hero-text-col{padding:140px 48px 80px}}
+@media(min-width:1024px){.hero-text-col{padding:140px 64px 80px}}
+.hero-jp-label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink3);margin-bottom:24px}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:.95;letter-spacing:-.01em;color:var(--ink);margin-bottom:28px}
+h1.hero-title em{font-style:italic;color:var(--red)}
+.hero-divider{width:40px;height:1px;background:var(--red);margin-bottom:24px}
+.hero-sub{font-size:.92rem;line-height:1.7;color:var(--ink2);max-width:380px;margin-bottom:40px;font-weight:300}
+.hero-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--ink);color:var(--bg);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;text-decoration:none;transition:background .2s}
+.btn-primary:hover{background:var(--red)}
+.btn-link{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);text-decoration:none;cursor:pointer;transition:color .2s}
+.btn-link:hover{color:var(--red)}
+.hero-img-col{position:relative;min-height:50svh;overflow:hidden}
+@media(min-width:768px){.hero-img-col{min-height:100svh}}
+.hero-img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-year-badge{position:absolute;bottom:32px;left:24px;background:var(--bg);padding:12px 20px;z-index:2}
+.hero-year-badge span{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+.hero-year-badge strong{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink)}
+
+/* ---- PHILOSOPHY ---- */
+.philosophy{padding:80px 0;border-bottom:1px solid var(--border)}
+.philosophy-inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.philosophy-inner{grid-template-columns:1fr 2fr;gap:80px;align-items:start}}
+.philosophy-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+.philosophy-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:300;line-height:1.5;color:var(--ink);font-style:italic}
+
+/* ---- MENU ---- */
+.menu-section{padding:96px 0}
+.menu-header{display:flex;flex-direction:column;gap:8px;margin-bottom:64px}
+@media(min-width:768px){.menu-header{flex-direction:row;align-items:baseline;justify-content:space-between}}
+.menu-title-group{display:flex;flex-direction:column;gap:6px}
+.section-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--ink)}
+.section-title em{font-style:italic}
+.menu-note{font-size:.78rem;color:var(--ink3);letter-spacing:.06em;align-self:flex-end}
+
+.menu-list{display:flex;flex-direction:column}
+.menu-item{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--border);transition:background .15s;cursor:pointer}
+@media(min-width:768px){.menu-item{grid-template-columns:80px 1fr auto}}
+.menu-item:last-child{border-bottom:1px solid var(--border)}
+.menu-item:hover{background:var(--bg2)}
+.menu-item-img{width:100%;aspect-ratio:16/9;overflow:hidden;display:none}
+@media(min-width:768px){.menu-item-img{display:block;width:80px;aspect-ratio:1;overflow:hidden}}
+.menu-item-img img{width:100%;height:100%;object-fit:cover}
+.menu-item-body{padding:20px 0 20px 0;display:flex;flex-direction:column;gap:4px}
+@media(min-width:768px){.menu-item-body{padding:20px 24px}}
+.menu-item-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink)}
+.menu-item-desc{font-size:.8rem;color:var(--ink3);line-height:1.5}
+.menu-item-price{padding:20px 0;display:flex;align-items:center;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);white-space:nowrap}
+@media(min-width:768px){.menu-item-price{padding:0}}
+
+/* ---- INTERNO / STORIA ---- */
+.storia-section{padding:96px 0;background:var(--bg2)}
+.storia-inner{display:grid;grid-template-columns:1fr;gap:64px}
+@media(min-width:768px){.storia-inner{grid-template-columns:3fr 2fr;align-items:center;gap:80px}}
+.storia-text{display:flex;flex-direction:column;gap:20px}
+.storia-text p{font-size:.95rem;line-height:1.8;color:var(--ink2);font-weight:300}
+.storia-text p:first-of-type{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;line-height:1.5;color:var(--ink);font-style:italic}
+.storia-img{aspect-ratio:4/5;overflow:hidden}
+.storia-img img{width:100%;height:100%;object-fit:cover}
+
+/* ---- GALLERY STRIP ---- */
+.gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);height:280px;gap:2px}
+@media(min-width:768px){.gallery-strip{height:400px}}
+.gallery-cell{overflow:hidden}
+.gallery-cell img{width:100%;height:100%;object-fit:cover;transition:transform .5s;cursor:pointer}
+.gallery-cell:hover img{transform:scale(1.05)}
+
+/* ---- PRENOTA ---- */
+.prenota-section{padding:96px 0}
+.prenota-inner{display:grid;grid-template-columns:1fr;gap:64px}
+@media(min-width:768px){.prenota-inner{grid-template-columns:1fr 1fr;align-items:start;gap:80px}}
+.prenota-info{display:flex;flex-direction:column;gap:32px}
+.prenota-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--ink)}
+.prenota-info h2 em{font-style:italic;color:var(--red)}
+.prenota-detail{display:flex;flex-direction:column;gap:6px}
+.prenota-detail-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.prenota-detail-val{font-size:.95rem;color:var(--ink);font-weight:400}
+.prenota-detail-val a{color:var(--red);text-decoration:none;cursor:pointer}
+.prenota-form{display:flex;flex-direction:column;gap:14px}
+.form-input{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink);font-family:'Inter',sans-serif;font-size:.9rem;padding:12px 0;outline:none;transition:border-color .2s;width:100%}
+.form-input:focus{border-color:var(--ink)}
+.form-input::placeholder{color:var(--ink3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{background:var(--ink);color:var(--bg);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:16px;border:none;cursor:pointer;margin-top:8px;transition:background .2s}
+.form-submit:hover{background:var(--red)}
+
+/* ---- FOOTER ---- */
+footer{background:var(--ink);color:var(--bg);padding:64px 0 32px}
+.footer-inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.footer-inner{grid-template-columns:2fr 1fr 1fr}}
+.footer-logo-en{font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);margin-bottom:4px}
+.footer-logo-jp{font-size:.6rem;letter-spacing:.3em;color:rgba(250,250,247,.4)}
+.footer-desc{font-size:.82rem;color:rgba(250,250,247,.5);line-height:1.6;margin-top:16px;max-width:260px}
+.footer-col-title{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,247,.4);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:.82rem;color:rgba(250,250,247,.6);text-decoration:none;cursor:pointer;transition:color .2s}
+.footer-col ul li a:hover{color:var(--bg)}
+.footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(250,250,247,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:.72rem;color:rgba(250,250,247,.25)}
+.footer-privacy{font-size:.72rem;color:rgba(250,250,247,.25);text-decoration:none;cursor:pointer}
+.footer-privacy:hover{color:rgba(250,250,247,.6)}
+
+/* ---- REVEAL ---- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-en">Koi</span>
+      <span class="nav-logo-jp"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#storia">La nostra storia</a></li>
+      <li><a href="#prenota">Prenota</a></li>
+    </ul>
+    <a href="#prenota" class="nav-cta">Prenota</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text-col">
+    <p class="hero-jp-label"> &mdash; Torino</p>
+    <h1 class="hero-title">Koi<br><em>Cucina giapponese autentica.</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Sushi, sashimi, ramen preparati con ingredienti selezionati e tecniche tradizionali. Il Giappone a Torino.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Scopri il menu</a>
+      <a href="#prenota" class="btn-link">Prenota un tavolo &rarr;</a>
+    </div>
+  </div>
+  <div class="hero-img-col">
+    <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=1200&q=90&auto=format&fit=crop" alt="Koi — ristorante giapponese Torino">
+    <div class="hero-year-badge">
+      <span>dal</span>
+      <strong>2003</strong>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy reveal">
+  <div class="container">
+    <div class="philosophy-inner">
+      <p class="philosophy-label">La nostra filosofia</p>
+      <p class="philosophy-text">La cucina giapponese insegna il rispetto per ogni ingrediente. Noi cerchiamo di farlo ogni giorno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="menu-header reveal">
+      <div class="menu-title-group">
+        <p class="section-label">Il menu</p>
+        <h2 class="section-title"><em>Selezione</em> del giorno</h2>
+      </div>
+      <span class="menu-note">Tutti i prezzi includono IVA</span>
+    </div>
+    <div class="menu-list">
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1591814468924-caf88d1232e1?w=160&q=75&auto=format&fit=crop" alt="Sashimi del Giorno" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Sashimi del Giorno</div><div class="menu-item-desc">Selezione di 9 pezzi di pesce fresco</div></div>
+        <div class="menu-item-price">€22</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=160&q=75&auto=format&fit=crop" alt="Nigiri Premium" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Nigiri Premium</div><div class="menu-item-desc">6 pezzi assortiti con wasabi fresco</div></div>
+        <div class="menu-item-price">€18</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=160&q=75&auto=format&fit=crop" alt="Dragon Roll" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Dragon Roll</div><div class="menu-item-desc">Gambero tempura, avocado, salmone, tobiko</div></div>
+        <div class="menu-item-price">€16</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=160&q=75&auto=format&fit=crop" alt="Tonkotsu Ramen" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Tonkotsu Ramen</div><div class="menu-item-desc">Brodo di maiale 12 ore, chashu, uovo, nori</div></div>
+        <div class="menu-item-price">€15</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=160&q=75&auto=format&fit=crop" alt="Gyoza al Vapore" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Gyoza al Vapore</div><div class="menu-item-desc">8 ravioli di maiale e cavolo, salsa ponzu</div></div>
+        <div class="menu-item-price">€10</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=160&q=75&auto=format&fit=crop" alt="Edamame al Sale" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Edamame al Sale</div><div class="menu-item-desc">Fagioli di soia al vapore</div></div>
+        <div class="menu-item-price">€6</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=160&q=75&auto=format&fit=crop" alt="Maki Salmone" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Maki Salmone</div><div class="menu-item-desc">8 pezzi con sesamo tostato</div></div>
+        <div class="menu-item-price">€12</div>
+      </div>
+      <div class="menu-item reveal">
+        <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=160&q=75&auto=format&fit=crop" alt="Mochi Ice Cream" loading="lazy"></div>
+        <div class="menu-item-body"><div class="menu-item-name">Mochi Ice Cream</div><div class="menu-item-desc">Dolce al te matcha e fragola</div></div>
+        <div class="menu-item-price">€8</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80&auto=format&fit=crop" alt="Koi cucina" loading="lazy"></div>
+  <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80&auto=format&fit=crop" alt="Koi sala" loading="lazy"></div>
+  <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80&auto=format&fit=crop" alt="Koi dettaglio" loading="lazy"></div>
+</div>
+
+<!-- STORIA -->
+<section class="storia-section" id="storia">
+  <div class="container">
+    <div class="storia-inner">
+      <div class="storia-text reveal">
+        <p class="section-label">La nostra storia</p>
+        <h2 class="section-title"><em>Koi</em></h2>
+        <p>Nati dalla passione per la cultura gastronomica giapponese, proponiamo una cucina fedele alla tradizione: nessun compromesso con l'autenticita.</p>
+        <p>Il pesce arriva fresco ogni mattina. Il riso e importato dal Giappone. Il menu cambia con le stagioni. La qualita e tutto.</p>
+        <a href="#prenota" class="btn-primary" style="align-self:flex-start;margin-top:8px">Prenota ora</a>
+      </div>
+      <div class="storia-img reveal">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=85&auto=format&fit=crop" alt="Interno Koi" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRENOTA -->
+<section class="prenota-section" id="prenota">
+  <div class="container">
+    <div class="prenota-inner">
+      <div class="prenota-info reveal">
+        <p class="section-label">Prenota</p>
+        <h2>Riserva il tuo<br><em>tavolo</em></h2>
+        <div class="prenota-detail">
+          <span class="prenota-detail-label">Indirizzo</span>
+          <span class="prenota-detail-val">Via Secondo Frola, 10121 Torino</span>
+        </div>
+        <div class="prenota-detail">
+          <span class="prenota-detail-label">Telefono</span>
+          <span class="prenota-detail-val"><a href="tel:+3911543957">011 543957</a></span>
+        </div>
+        <div class="prenota-detail">
+          <span class="prenota-detail-label">Email</span>
+          <span class="prenota-detail-val"><a href="mailto:info@ristorantekoi.it">info@ristorantekoi.it</a></span>
+        </div>
+        <div class="prenota-detail">
+          <span class="prenota-detail-label">Orari</span>
+          <span class="prenota-detail-val">19:30 - 23:00</span>
+        </div>
+      </div>
+      <div class="prenota-form reveal">
+        <input class="form-input" type="text" placeholder="Nome e cognome" autocomplete="name">
+        <input class="form-input" type="tel" placeholder="Telefono" autocomplete="tel">
+        <div class="form-row">
+          <input class="form-input" type="text" placeholder="Data">
+          <input class="form-input" type="number" placeholder="Persone" min="1" max="12">
+        </div>
+        <textarea class="form-input" rows="3" placeholder="Note o richieste speciali" style="resize:vertical"></textarea>
+        <button class="form-submit">Invia richiesta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-en">Koi</div>
+        <div class="footer-logo-jp"></div>
+        <p class="footer-desc">Ristorante giapponese a Torino. Cucina autentica, ingredienti selezionati, atmosfera raccolta.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Menu</div>
+        <ul>
+          <li><a href="#menu">Sushi &amp; Sashimi</a></li>
+          <li><a href="#menu">Ramen</a></li>
+          <li><a href="#menu">Antipasti</a></li>
+          <li><a href="#menu">Dolci</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contatti</div>
+        <ul>
+          <li><a href="tel:+3911543957">011 543957</a></li>
+          <li><a href="mailto:info@ristorantekoi.it">info@ristorantekoi.it</a></li>
+          <li><a href="#">Via Secondo Frola</a></li>
+          <li><a href="#">10121 Torino</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2003 Koi</span>
+      <a href="#" class="footer-privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
